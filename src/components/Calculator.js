@@ -1,14 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import Display from './Display';
-import Buttons from './Buttons';
+import Display from "./Display";
+import KeyPad from './KeyPad/KeyPad';
+import Button from "./KeyPad/Button";
 
 const Calculator = () => {
-    return <React.Fragment>
-        <Display />
-        <Buttons />
-    </React.Fragment>
-}
+
+	return (
+		<React.Fragment>
+			<Display />
+            <KeyPad />
+		</React.Fragment>
+	);
+};
 
 export default Calculator;
-
