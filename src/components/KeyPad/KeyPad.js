@@ -15,8 +15,13 @@ const KeyPad = (props) => {
     operationsButtons.push(<Button id={11} value={'-'} />);
     operationsButtons.push(<Button id={12} value={'×'} />);
     operationsButtons.push(<Button id={13} value={'÷'} />);
+    operationsButtons.push(<Button id={14} value={'='} />);
 
     return <React.Fragment>
+        <Button id={15} value={'AC'} />
+        <Button id={16} value={'+/-'} />
+        <Button id={17} value={'%'} />
+        <Button id={18} onClick={props.onClick} value={'.'} />
         {operationsButtons}
         {numberButtons}
     </React.Fragment>
