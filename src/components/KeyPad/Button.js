@@ -4,8 +4,8 @@ import './Button.module.css';
 
 const Button = (props) => {
 
-    function clickHandler(event) {
-        props.onClick(event.target.value);
+    function clickHandler() {
+        props.onClick(props.value);
     }
 
     return <button onClick={clickHandler}>{props.value}</button>

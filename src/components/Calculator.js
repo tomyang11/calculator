@@ -1,16 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+
+import styles from './Calculator.module.css';
 
 import Display from "./Display";
 import KeyPad from './KeyPad/KeyPad';
-import Button from "./KeyPad/Button";
 
 const Calculator = () => {
 
+    const [enteredVal, setEnteredVal] = useState(0);
+
 	return (
-		<React.Fragment>
-			<Display />
-            <KeyPad />
-		</React.Fragment>
+		<div className={styles.calculator}>
+			<Display enteredVal={enteredVal} />
+            <KeyPad onClick={setEnteredVal} />
+		</div>
 	);
 };
 
