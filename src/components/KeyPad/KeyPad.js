@@ -8,7 +8,7 @@ const KeyPad = (props) => {
     const operationsButtons = [];
 
 	for (let i = 0; i < 10; i++) {
-		numberButtons.push(<Button onClick={props.onClick} id={i} value={i} />);
+		numberButtons.push(<Button onClick={props.onClick} id={i} value={String(i)} />);
 	}
 
     operationsButtons.push(<Button id={10} value={'+'} />);
