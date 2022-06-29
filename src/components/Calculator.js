@@ -10,38 +10,28 @@ const Calculator = () => {
     const [input, setInput] = useState('0');
     let operationsSeries = [];
 
-    let dotCounter = 0;
-    let zeroCount = 0;
     function newEntry(entry) {
-        // console.log('entry is ' + entry);
-        // console.log('input is ' + input);
-        // if (entry === '.' && dotCounter === 0) {
-        //     // console.log('entered second if');
-        //     setInput(input + '.');
-        //     dotCounter++;
-        // } else if (typeof entry === "number" && input.toString().includes('.')) {
-        //     // console.log('entered third if');
-        //     setInput(parseInt(input.toString().slice(0, input.toString().length - 1)) + entry / 10)
-        // } else if (typeof entry === "number" && !input.toString().includes('.')) {
-        //     // console.log('entered first if');
-        //     setInput(input * 10 + entry);
-        // }
         if (entry == '+' || entry == '-' || entry == '×' || entry == '÷') {
-            return 'operation';
+            let pushVal = input;
+            operationsSeries.push(parseFloat(pushVal));
+            operationsSeries.push(entry);
+            console.log(operationsSeries[0]);
         } else if (entry == '=') {
             return 'evaluate';
         } else if (entry == 'AC') {
-            return 'clear';
+            operationsSeries.length = 0;
+            setInput('0');
         } else if (entry == '+/-') {
             return 'sign';
         } else if (entry == '%') {
-            return 'percent';
+            if (parseFloat(input) != NaN && input != '0') {
+                setInput(input / 100);
+            }
         } else {
-            if (entry == '0' && parseInt(input) === 0) {
+            if (entry == '0' && parseFloat(input) === 0) {
                 return;
             }
             if (input === '0') {
-                console.log("entered");
                 setInput(entry);
                 return;
             }
