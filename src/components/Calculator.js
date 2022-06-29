@@ -28,12 +28,11 @@ const Calculator = () => {
                 setInput(input / 100);
             }
         } else {
-            if (entry == '0' && parseFloat(input) === 0) {
-                return;
-            }
             if (input === '0') {
-                setInput(entry);
-                return;
+                if (entry != '0') {
+                    setInput(entry);
+                }
+                return
             }
             setInput(input + entry);
         }
