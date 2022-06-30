@@ -10,6 +10,14 @@ const Calculator = () => {
     const [input, setInput] = useState('0');
     let operationsSeries = [];
 
+    function evaluate() {
+        console.log("entered evalaute");
+        if (operationsSeries[1] === '+') {
+            console.log("entered evaluate's if statement");
+            return (operationsSeries[0] + parseFloat(operationsSeries[2]));
+        }
+    }
+
     function newEntry(entry) {
         if (entry == '+' || entry == '-' || entry == '×' || entry == '÷') {
             if (operationsSeries.length % 2 === 0) {
