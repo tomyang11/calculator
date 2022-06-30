@@ -11,11 +11,17 @@ const Calculator = () => {
     let operationsSeries = [];
 
     function evaluate() {
-        console.log("entered evalaute");
-        if (operationsSeries[1] === '+') {
-            console.log("entered evaluate's if statement");
-            return (operationsSeries[0] + parseFloat(operationsSeries[2]));
+        if (operationsSeries[1] === '+' && operationsSeries.length > 2) {
+            console.log("yo");
+            let newValue = operationsSeries[0] + parseFloat(operationsSeries[2]);
+            resetOperationsSeries(newValue);
+            setInput(String(newValue));
         }
+    }
+
+    function resetOperationsSeries(newValue) {
+        operationsSeries.length = 0;
+        operationsSeries.push(newValue);
     }
 
     function newEntry(entry) {
@@ -24,6 +30,7 @@ const Calculator = () => {
                 let pushVal = input;
                 operationsSeries.push(parseFloat(pushVal));
                 operationsSeries.push(entry);
+                evaluate();
             }
         } else if (entry == '=') {
             return 'evaluate';
