@@ -10,28 +10,38 @@ const Calculator = () => {
     const [input, setInput] = useState('0');
     let operationsSeries = [];
 
-    function evaluate() {
-        if (operationsSeries[1] === '+' && operationsSeries.length > 2) {
-            console.log("yo");
+    function evaluate(entry) {
+        console.log(operationsSeries[1]);
+        if (operationsSeries[1] === '+') {
+            console.log("in evaluate's if");
             let newValue = operationsSeries[0] + parseFloat(operationsSeries[2]);
-            resetOperationsSeries(newValue);
+            resetOperationsSeries(newValue, entry);
             setInput(String(newValue));
         }
     }
 
-    function resetOperationsSeries(newValue) {
+    function resetOperationsSeries(newValue, entry) {
         operationsSeries.length = 0;
         operationsSeries.push(newValue);
+        operationsSeries.push(entry);
+    }
+
+    function operate(entry) {
+        if (operationsSeries.length === 0) {
+            console.log(operationsSeries);
+            let pushVal = input;
+            operationsSeries.push(parseFloat(pushVal));
+            operationsSeries.push(entry);
+            console.log(operationsSeries);
+        } else if (operationsSeries.length === 2) {
+            console.log("in operate's second if");
+            evaluate(entry);
+        }
     }
 
     function newEntry(entry) {
         if (entry == '+' || entry == '-' || entry == '×' || entry == '÷') {
-            if (operationsSeries.length % 2 === 0) {
-                let pushVal = input;
-                operationsSeries.push(parseFloat(pushVal));
-                operationsSeries.push(entry);
-                evaluate();
-            }
+            operate(entry);
         } else if (entry == '=') {
             return 'evaluate';
         } else if (entry == 'AC') {
