@@ -8,6 +8,7 @@ import KeyPad from './KeyPad/KeyPad';
 const Calculator = () => {
 
     const [input, setInput] = useState('0');
+    let currVal = 0;
     let operationsSeries = [];
 
     function evaluate(entry) {
@@ -28,11 +29,11 @@ const Calculator = () => {
 
     function operate(entry) {
         if (operationsSeries.length === 0) {
-            console.log(operationsSeries);
+            console.log(operationsSeries); //testing
             let pushVal = input;
             operationsSeries.push(parseFloat(pushVal));
             operationsSeries.push(entry);
-            console.log(operationsSeries);
+            console.log(operationsSeries); //testing
         } else if (operationsSeries.length === 2) {
             console.log("in operate's second if");
             evaluate(entry);
