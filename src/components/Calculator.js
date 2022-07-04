@@ -7,37 +7,22 @@ import KeyPad from './KeyPad/KeyPad';
 
 const Calculator = () => {
 
-    const [input, setInput] = useState('0');
-    let currVal = 0;
-    let operationsSeries = [];
-
-    function evaluate(entry) {
-        console.log(operationsSeries[1]);
-        if (operationsSeries[1] === '+') {
-            console.log("in evaluate's if");
-            let newValue = operationsSeries[0] + parseFloat(operationsSeries[2]);
-            resetOperationsSeries(newValue, entry);
-            setInput(String(newValue));
-        }
-    }
-
-    function resetOperationsSeries(newValue, entry) {
-        operationsSeries.length = 0;
-        operationsSeries.push(newValue);
-        operationsSeries.push(entry);
-    }
+    const [input, setInput] = useState('0'); // String
+    const [currTotal, setCurrTotal] = useState(0); // Int
+    const [sign, setSign] = useState(""); // Operation Sign as String
 
     function operate(entry) {
-        if (operationsSeries.length === 0) {
-            console.log(operationsSeries); //testing
-            let pushVal = input;
-            operationsSeries.push(parseFloat(pushVal));
-            operationsSeries.push(entry);
-            console.log(operationsSeries); //testing
-        } else if (operationsSeries.length === 2) {
-            console.log("in operate's second if");
-            evaluate(entry);
+        console.log("input is " + input);
+        if (sign === "") {
+            console.log("sign is empty");
+            setCurrTotal(parseFloat(input));
+        } else if (sign === '+') {
+            console.log("sign === +");
+            setCurrTotal(currTotal + parseFloat(input));
         }
+        setSign(entry);
+        setInput(String(currTotal));
+        console.log("input is: " + input + " currTotal is: " + currTotal);
     }
 
     function newEntry(entry) {
@@ -46,8 +31,9 @@ const Calculator = () => {
         } else if (entry == '=') {
             return 'evaluate';
         } else if (entry == 'AC') {
-            operationsSeries.length = 0;
             setInput('0');
+            setCurrTotal(0);
+            setSign('');
         } else if (entry == '+/-') {
             setInput(input * -1);
         } else if (entry == '%') {
@@ -64,7 +50,8 @@ const Calculator = () => {
                 return
             }
             // check if the new entry is part of a new number
-            if (input == operationsSeries[0]) {
+            if (input == currTotal) {
+                console.log("好极了");
                 setInput(entry);
             } else {
                 setInput(input + entry);
