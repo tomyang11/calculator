@@ -10,16 +10,11 @@ const Calculator = () => {
     const [input, setInput] = useState('0'); // String
     const [currTotal, setCurrTotal] = useState(0); // Float
     const [sign, setSign] = useState(""); // Operation Sign as String
-    let prev
 
     function operate(entry) {
-        console.log("input is " + input);
         if (sign === "") {
-            console.log("sign is empty");
             setCurrTotal(parseFloat(input));
         } else if (sign === '+') {
-            console.log("sign === +");
-            console.log("currTotal is " + currTotal + "input is " + input);
             setCurrTotal(currTotal + parseFloat(input));
         } else if (sign === '-') {
             setCurrTotal(currTotal - parseFloat(input));
@@ -29,7 +24,6 @@ const Calculator = () => {
             setCurrTotal(currTotal / parseFloat(input));
         }
         setSign(entry);
-        console.log("input is: " + input + " currTotal is: " + currTotal);
     }
 
     useEffect(() => {
@@ -37,10 +31,8 @@ const Calculator = () => {
     }, [currTotal]);
 
     function newEntry(entry) {
-        console.log("In entry*** input is: " + input + " currTotal is: " + currTotal);
         if (entry == '+' || entry == '-' || entry == '×' || entry == '÷') {
             operate(entry);
-            //setInput(String(currTotal));
         } else if (entry == '=') {
             return 'evaluate';
         } else if (entry == 'AC') {
@@ -64,7 +56,6 @@ const Calculator = () => {
             }
             // check if the new entry is part of a new number
             if (input == currTotal) {
-                console.log("好极了");
                 setInput(entry);
             } else {
                 setInput(input + entry);
