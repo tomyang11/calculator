@@ -11,7 +11,11 @@ const Calculator = () => {
     const [currTotal, setCurrTotal] = useState(0); // Float
     const [sign, setSign] = useState(""); // Operation Sign as String
 
-    function operate(entry) {
+    useEffect(() => {
+        setInput(String(currTotal));
+    }, [currTotal]);
+
+    function evaluate() {
         if (sign === "") {
             setCurrTotal(parseFloat(input));
         } else if (sign === '+') {
@@ -23,18 +27,31 @@ const Calculator = () => {
         } else if (sign === '÷') {
             setCurrTotal(currTotal / parseFloat(input));
         }
-        setSign(entry);
     }
 
-    useEffect(() => {
-        setInput(String(currTotal));
-    }, [currTotal]);
+    function numInput(entry) {
+        // if current stored value for input is zero, handle if specially
+        if (input === '0') {
+            // if new entry is not zero that means it's the first none zero entry
+            if (entry != '0') {
+                setInput(entry);
+            }
+            return
+        }
+        // check if the new entry is part of a new number
+        if (input == currTotal) {
+            setInput(entry);
+        } else {
+            setInput(input + entry);
+        }
+    }
 
     function newEntry(entry) {
         if (entry == '+' || entry == '-' || entry == '×' || entry == '÷') {
-            operate(entry);
+            evaluate();
+            setSign(entry);
         } else if (entry == '=') {
-            return 'evaluate';
+            evaluate();
         } else if (entry == 'AC') {
             setInput('0');
             setCurrTotal(0);
@@ -46,20 +63,7 @@ const Calculator = () => {
                 setInput(input / 100);
             }
         } else {
-            // if current stored value for input is zero, handle if specially
-            if (input === '0') {
-                // if new entry is not zero that means it's the first none zero entry
-                if (entry != '0') {
-                    setInput(entry);
-                }
-                return
-            }
-            // check if the new entry is part of a new number
-            if (input == currTotal) {
-                setInput(entry);
-            } else {
-                setInput(input + entry);
-            }
+            numInput(entry);
         }
     }
 
