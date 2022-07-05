@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import styles from './Calculator.module.css';
 
@@ -8,8 +8,9 @@ import KeyPad from './KeyPad/KeyPad';
 const Calculator = () => {
 
     const [input, setInput] = useState('0'); // String
-    const [currTotal, setCurrTotal] = useState(0); // Int
+    const [currTotal, setCurrTotal] = useState(0); // Float
     const [sign, setSign] = useState(""); // Operation Sign as String
+    let prev
 
     function operate(entry) {
         console.log("input is " + input);
@@ -18,16 +19,28 @@ const Calculator = () => {
             setCurrTotal(parseFloat(input));
         } else if (sign === '+') {
             console.log("sign === +");
+            console.log("currTotal is " + currTotal + "input is " + input);
             setCurrTotal(currTotal + parseFloat(input));
+        } else if (sign === '-') {
+            setCurrTotal(currTotal - parseFloat(input));
+        } else if (sign === '×') {
+            setCurrTotal(currTotal * parseFloat(input));
+        } else if (sign === '÷') {
+            setCurrTotal(currTotal / parseFloat(input));
         }
         setSign(entry);
-        setInput(String(currTotal));
         console.log("input is: " + input + " currTotal is: " + currTotal);
     }
 
+    useEffect(() => {
+        setInput(String(currTotal));
+    }, [currTotal]);
+
     function newEntry(entry) {
+        console.log("In entry*** input is: " + input + " currTotal is: " + currTotal);
         if (entry == '+' || entry == '-' || entry == '×' || entry == '÷') {
             operate(entry);
+            //setInput(String(currTotal));
         } else if (entry == '=') {
             return 'evaluate';
         } else if (entry == 'AC') {
