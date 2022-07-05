@@ -69,9 +69,7 @@ const Calculator = () => {
 
 	return (
 		<div className={styles.calculator}>
-            <div>
-                <Display displayVal={input} />
-            </div>
+            <Display displayVal={input} />
             <div>
                 <KeyPad onClick={newEntry} />
             </div>

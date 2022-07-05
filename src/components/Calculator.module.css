@@ -1,11 +1,13 @@
 .calculator {
     background-color: yellow;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* top: 0px;
     right: 0px;
     left: 0px;
     bottom: 0px;
-    position: absolute;
+    position: absolute; */
 }
