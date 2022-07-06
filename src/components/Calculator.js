@@ -37,13 +37,25 @@ const Calculator = () => {
 			}
 			return;
 		}
-		// check if the new entry is part of a new number
-		if (input == currTotal) {
+		
+		if (input === '-0') { // to toggle negative sign
+            setInput('-' + entry);
+        } else if (input == currTotal) { // check if the new entry is part of a new number
 			setInput(entry);
 		} else {
 			setInput(input + entry);
 		}
 	}
+
+    function handleNegative() {
+        if (input === '0' || input === String(currTotal)) {
+            setInput('-0');
+        } else if (input === '-0') {
+            setInput('0');
+        } else {
+            setInput(String(input * -1));
+        }
+    }
 
 	function newEntry(entry) {
 		if (entry == "+" || entry == "-" || entry == "×" || entry == "÷") {
@@ -56,7 +68,8 @@ const Calculator = () => {
 			setCurrTotal(0);
 			setSign("");
 		} else if (entry == "+/-") {
-			setInput(input * -1);
+			// setInput(input * -1);
+            handleNegative();
 		} else if (entry == "%") {
 			if (parseFloat(input) != NaN && input != "0") {
 				setInput(input / 100);
