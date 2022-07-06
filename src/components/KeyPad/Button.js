@@ -8,7 +8,7 @@ const Button = (props) => {
         props.onClick(props.value);
     }
 
-    return <button onClick={clickHandler}>{props.value}</button>
+    return <button className={styles.button} onClick={clickHandler}>{props.value}</button>
 }
 
 export default Button;

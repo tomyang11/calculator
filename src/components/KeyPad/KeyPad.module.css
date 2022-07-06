@@ -1,0 +1,57 @@
+.keypad {
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 85%;
+}
+
+.keypad-rightside {
+    background-color: teal;
+    display: flex;
+    width: 25%;
+    height: 100%;
+}
+
+.keypad-leftside {
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    height: 100%;
+}
+
+.keypad-specialbtn {
+    background-color: green;
+    display: flex;
+    width: 100%;
+    height: 20%
+}
+
+.keypad-numbers {
+    background-color: red;
+    flex-wrap: wrap;
+    display: flex;
+    width: 100%;
+    height: 80%;
+}
+
+.keypad-operations {
+    background-color: peachpuff;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.grey-buttons {
+    background-color: #E0E0E0;
+    color: black;
+}
+
+.orange-buttons {
+    background-color: #F4923E;
+    color: white;
+}

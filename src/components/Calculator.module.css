@@ -5,9 +5,9 @@
     align-items: flex-start;
     flex-wrap: wrap;
     flex-direction: row;
-    /* top: 0px;
-    right: 0px;
+    position: fixed;
+    top: 0px;
     left: 0px;
     bottom: 0px;
-    position: absolute; */
+    right: 0px;
 }
