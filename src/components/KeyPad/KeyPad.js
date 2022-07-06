@@ -9,12 +9,12 @@ const KeyPad = (props) => {
 		<div className={styles.keypad}>
             <div className={styles['keypad-leftside']}>
                 <div className={styles['keypad-specialbtn']}>
-                    <Button className={`${styles['grey-buttons']}`} onClick={props.onClick} id={15} value={"AC"} />
+                    <Button onClick={props.onClick} id={15} value={"AC"} />
                     <Button onClick={props.onClick} id={16} value={"+/-"} />
                     <Button onClick={props.onClick} id={17} value={"%"} />
                 </div>
                 <div className={styles['keypad-numbers']}>
-                    <Button className={`${styles['grey-buttons']}`} onClick={props.onClick} id={9} value={'9'} />
+                    <Button onClick={props.onClick} id={9} value={'9'} />
                     <Button onClick={props.onClick} id={8} value={'8'} />
                     <Button onClick={props.onClick} id={7} value={'7'} />
                     <Button onClick={props.onClick} id={6} value={'6'} />
@@ -29,7 +29,7 @@ const KeyPad = (props) => {
             </div>
             <div className={styles['keypad-rightside']}>
                 <div className={styles['keypad-operations']}>
-                    <Button className={`${styles['orange-buttons']}`} onClick={props.onClick} id={10} value={"÷"} />
+                    <Button onClick={props.onClick} id={10} value={"÷"} />
                     <Button onClick={props.onClick} id={11} value={"×"} />
                     <Button onClick={props.onClick} id={12} value={"-"} />
                     <Button onClick={props.onClick} id={13} value={"+"} />
